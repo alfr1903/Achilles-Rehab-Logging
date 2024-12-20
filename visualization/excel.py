@@ -39,6 +39,7 @@ def create_excel_document():
         )
         create_basket_worksheet(writer, bball_df)
         create_gelatin_worksheet(writer, gelatin_df)
+        create_heel_drop_worksheet(writer, heel_drop_straight_df, heel_drop_bent_df)
 
 
 def create_pain_worksheet(writer, df):
@@ -199,3 +200,15 @@ def create_gelatin_worksheet(writer, df):
         write(0, 0, "Gelatin protokoll - gelatinpulver blandet med 1 glass appelsinjuice")
 
     writer.sheets["Gelatin protokoll"].set_column("A:C", 15)
+
+def create_heel_drop_worksheet(writer, df_hdsl, df_hdbk):
+    df_hdsl.to_excel(writer, sheet_name="Heel drop protocol", startrow=1, index=False)
+    writer.sheets["Heel drop protocol"].write(0, 0, "Alfredson Heel drop protocol, strak høyre fot")
+
+    col2 = len(df_hdsl.columns) + 1
+
+    df_hdbk.to_excel(writer, sheet_name="Heel drop protocol", startrow=1, startcol=col2, index=False)
+    writer.sheets["Heel drop protocol"]. \
+        write(0, col2, "Alfredson heel drop protocol, bøyd høyre kne")
+
+    writer.sheets["Heel drop protocol"].set_column("A:F", 15)
