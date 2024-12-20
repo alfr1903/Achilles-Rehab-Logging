@@ -211,4 +211,4 @@ def create_heel_drop_worksheet(writer, df_hdsl, df_hdbk):
     writer.sheets["Heel drop protocol"]. \
         write(0, col2, "Alfredson heel drop protocol, bøyd høyre kne")
 
-    writer.sheets["Heel drop protocol"].set_column("A:F", 15)
+    writer.sheets["Heel drop protocol"].set_column("A:I", 15)
