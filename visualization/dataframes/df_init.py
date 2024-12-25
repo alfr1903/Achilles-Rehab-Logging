@@ -37,29 +37,13 @@ def transform_date(df):
     df.insert(0, "Date", pd.to_datetime(df["Recording Date"], format='%m/%d/%Y %I:%M %p').dt.date)
     del df["Recording Date"]
 
+dataframes = [
+    ankle_dynamic_df, ankle_vertical_df, bball_df, cr_seated_df, cr_seated_one_leg_df, cr_standing_one_leg_df,
+    gelatin_df, heel_drop_bent_df, heel_drop_straight_df, isokin_90_deg_df, isokin_cr_standing_df,
+    isokin_cr_standing_single_leg_df, oly_ballhandling_df, oly_sprint_df, oly_sprint_diag_df, oly_sprint_pull_df,
+    pain_df, skipping_ropes_df, static_cr_90_df, static_cr_bw_df, static_cr_df, static_cr_resistance_df,
+    static_cr_single_leg_df, trip_ex_con_df, trip_ex_ecc_df
+]
 
-transform_date(ankle_dynamic_df)
-transform_date(ankle_vertical_df)
-transform_date(bball_df)
-transform_date(cr_seated_df)
-transform_date(cr_seated_one_leg_df)
-transform_date(cr_standing_one_leg_df)
-transform_date(gelatin_df)
-transform_date(heel_drop_bent_df)
-transform_date(heel_drop_straight_df)
-transform_date(isokin_90_deg_df)
-transform_date(isokin_cr_standing_df)
-transform_date(isokin_cr_standing_single_leg_df)
-transform_date(oly_ballhandling_df)
-transform_date(oly_sprint_df)
-transform_date(oly_sprint_diag_df)
-transform_date(oly_sprint_pull_df)
-transform_date(pain_df)
-transform_date(skipping_ropes_df)
-transform_date(static_cr_90_df)
-transform_date(static_cr_bw_df)
-transform_date(static_cr_df)
-transform_date(static_cr_resistance_df)
-transform_date(static_cr_single_leg_df)
-transform_date(trip_ex_con_df)
-transform_date(trip_ex_ecc_df)
+for dataframe in dataframes:
+    transform_date(dataframe)

@@ -43,10 +43,11 @@ def create_excel_document():
 
 
 def create_pain_worksheet(writer, df):
-    df.to_excel(writer, sheet_name="Smerte morgen", startrow=1, index=False)
-    writer.sheets["Smerte morgen"].write(0, 0, "Smerte morgen akilles tåhev øvelser")
+    sheet_name = "Smerte morgen"
+    df.to_excel(writer, sheet_name=sheet_name, startrow=1, index=False)
+    writer.sheets[sheet_name].write(0, 0, "Smerte morgen akilles tåhev øvelser")
 
-    writer.sheets["Smerte morgen"].set_column("A:D", 15)
+    writer.sheets[sheet_name].set_column("A:D", 15)
 
 
 def create_oly_worksheet(
@@ -79,32 +80,32 @@ def create_oly_worksheet(
     row2_middle = len(df_straight_one_leg) + 4
 
     df_dyn.to_excel(writer, sheet_name=sheet_name, startrow=row2_middle + 1, startcol=col2, index=False)
-    writer.sheets[sheet_name].write(row2_middle, col2, "dynamisk fraskyv en fot i dynamometer")
+    writer.sheets[sheet_name].write(row2_middle, col2, "Dynamisk fraskyv en fot i dynamometer")
 
     row3_middle = row2_middle + len(df_dyn) + 4
 
     df_ex.to_excel(writer, sheet_name=sheet_name, startrow=row3_middle + 1, startcol=col2, index=False)
-    writer.sheets[sheet_name].write(row3_middle, col2, "eksentrisk fraskyv en fot i dynamometer")
+    writer.sheets[sheet_name].write(row3_middle, col2, "Eksentrisk fraskyv en fot i dynamometer")
 
     col3 = col2 + len(df_straight_one_leg.columns) + 1
 
     df_sprint.to_excel(writer, sheet_name=sheet_name, startrow=1, startcol=col3, index=False)
-    writer.sheets[sheet_name].write(0, col3, "løpsteg med resistans fra 1080 sprinten")
+    writer.sheets[sheet_name].write(0, col3, "Løpsteg med resistans fra 1080 sprinten")
 
     row2_right = len(df_sprint) + 4
 
     df_bball.to_excel(writer, sheet_name=sheet_name, startrow=row2_right + 1, startcol=col3, index=False)
-    writer.sheets[sheet_name].write(row2_right, col3, "ballbehandling på tå med resistans fra 1080 sprinten")
+    writer.sheets[sheet_name].write(row2_right, col3, "Ballbehandling på tå med resistans fra 1080 sprinten")
 
     row3_right = row2_right + len(df_bball) + 4
 
     df_sprint_diag.to_excel(writer, sheet_name=sheet_name, startrow=row3_right + 1, startcol=col3, index=False)
-    writer.sheets[sheet_name].write(row3_right, col3, "diagonal sprint og stans med resistans fra 1080 sprinten")
+    writer.sheets[sheet_name].write(row3_right, col3, "Diagonal sprint og stans med resistans fra 1080 sprinten")
 
     row4_right = row3_right + len(df_sprint_diag) + 4
 
     df_sprint_pull.to_excel(writer, sheet_name=sheet_name, startrow=row4_right + 1, startcol=col3, index=False)
-    writer.sheets[sheet_name].write(row4_right, col3, "rett sprint og stans med drag fra 1080 sprinten")
+    writer.sheets[sheet_name].write(row4_right, col3, "Rett sprint og stans med drag fra 1080 sprinten")
 
     writer.sheets[sheet_name].set_column("A:O", 15)
 
@@ -175,40 +176,48 @@ def create_sup_ex_worksheet(
 
 
 def create_ankle_ex_worksheet(writer, df_vert, df_dyn):
-    df_vert.to_excel(writer, sheet_name="Ankel rehab", startrow=1, index=False)
-    writer.sheets["Ankel rehab"].write(0, 0, "Ankel rehab - Plantar- og dorsalfleksjon i ankel med fot i luften")
+    sheet_name = "Ankel rehab"
+
+    df_vert.to_excel(writer, sheet_name=sheet_name, startrow=1, index=False)
+    writer.sheets[sheet_name].write(0, 0, "Ankel rehab - Plantar- og dorsalfleksjon i ankel med fot i luften")
 
     col2 = len(df_vert.columns) + 1
 
-    df_dyn.to_excel(writer, sheet_name="Ankel rehab", startrow=1, startcol=col2, index=False)
-    writer.sheets["Ankel rehab"]. \
+    df_dyn.to_excel(writer, sheet_name=sheet_name, startrow=1, startcol=col2, index=False)
+    writer.sheets[sheet_name]. \
         write(0, col2, "Ankel rehab - Dynamiske øvelser (star excursion, knebøy, vektskifte osv.)")
 
-    writer.sheets["Ankel rehab"].set_column("A:F", 15)
+    writer.sheets[sheet_name].set_column("A:F", 15)
 
 
 def create_basket_worksheet(writer, df):
-    df.to_excel(writer, sheet_name="Basket økter", startrow=1, index=False)
-    writer.sheets["Basket økter"].write(0, 0, "Basket økter")
+    sheet_name = "Basket økter"
 
-    writer.sheets["Basket økter"].set_column("A:D", 15)
+    df.to_excel(writer, sheet_name=sheet_name, startrow=1, index=False)
+    writer.sheets[sheet_name].write(0, 0, "Basket økter")
+
+    writer.sheets[sheet_name].set_column("A:D", 15)
 
 
 def create_gelatin_worksheet(writer, df):
-    df.to_excel(writer, sheet_name="Gelatin protokoll", startrow=1, index=False)
-    writer.sheets["Gelatin protokoll"]. \
+    sheet_name = "Gelatin protokoll"
+
+    df.to_excel(writer, sheet_name=sheet_name, startrow=1, index=False)
+    writer.sheets[sheet_name]. \
         write(0, 0, "Gelatin protokoll - gelatinpulver blandet med 1 glass appelsinjuice")
 
-    writer.sheets["Gelatin protokoll"].set_column("A:C", 15)
+    writer.sheets[sheet_name].set_column("A:C", 15)
 
 def create_heel_drop_worksheet(writer, df_hdsl, df_hdbk):
-    df_hdsl.to_excel(writer, sheet_name="Heel drop protocol", startrow=1, index=False)
-    writer.sheets["Heel drop protocol"].write(0, 0, "Alfredson Heel drop protocol, strak høyre fot")
+    sheet_name = "Heel drop protocol"
+
+    df_hdsl.to_excel(writer, sheet_name=sheet_name, startrow=1, index=False)
+    writer.sheets[sheet_name].write(0, 0, "Alfredson Heel drop protocol, strak høyre fot")
 
     col2 = len(df_hdsl.columns) + 1
 
-    df_hdbk.to_excel(writer, sheet_name="Heel drop protocol", startrow=1, startcol=col2, index=False)
-    writer.sheets["Heel drop protocol"]. \
+    df_hdbk.to_excel(writer, sheet_name=sheet_name, startrow=1, startcol=col2, index=False)
+    writer.sheets[sheet_name]. \
         write(0, col2, "Alfredson heel drop protocol, bøyd høyre kne")
 
-    writer.sheets["Heel drop protocol"].set_column("A:I", 15)
+    writer.sheets[sheet_name].set_column("A:I", 15)
